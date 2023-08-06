@@ -1,0 +1,73 @@
+﻿<!DOCTYPE HTML>
+<head>
+    <!-- Load plotly.js into the DOM -->
+    <script src='/lib/plotly-2.24.1.js'></script>
+    <script src='/lib/d3_3.5.17.js'></script>
+</head>
+
+<body>
+<div id='myDiv'><!-- Plotly chart will be drawn inside this DIV --></div>
+</body>
+<script lang="js">
+    d3.csv("rest/water-day-usage", function(err, rows){
+
+        function unpack(rows, key) {
+            return rows.map(function(row) { return row[key]; });
+        }
+
+        var trace1 = {
+            type: "scatter",
+            mode: "lines+markers",
+            name: 'ZW',
+            x: unpack(rows, 'Date'),
+            y: unpack(rows, 'ZW'),
+            line: {color: 'Blue', width: 0.5},
+            marker: { color: 'Blue', size: 4, opacity: 0.5 },
+            type: 'bar'
+        }
+
+        var trace2 = {
+            type: "scatter",
+            mode: "lines+markers",
+            name: 'CW',
+            x: unpack(rows, 'Date'),
+            y: unpack(rows, 'CW'),
+            line: {color: 'Red', width: 1},
+            marker: { color: 'Red', size: 4, opacity: 0.5 },
+            type: 'bar'
+        }
+
+        var data = [trace1, trace2];
+
+        var layout = {
+            title: 'Zużycie wody',
+            xaxis: {
+                autorange: true,
+                rangeselector: {buttons: [
+                        {
+                            count: 1,
+                            label: '1m',
+                            step: 'month',
+                            stepmode: 'backward'
+                        },
+                        {
+                            step: 'all'
+                        }
+                    ]},
+                rangeslider: {
+
+                },
+                type: 'date'
+            },
+            yaxis: {
+                zeroline: true,
+                autorange: false,
+                range: [0, 500],
+                type: 'linear'
+            }
+        };
+
+        Plotly.newPlot('myDiv', data, layout);
+    })
+
+</script>
