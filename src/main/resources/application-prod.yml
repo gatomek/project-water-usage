@@ -1,0 +1,7 @@
+data-folder: C:/Dokumenty/Digital-Garden/PKM/Tomek/Dokumenty/Budżet/Zużycie wody
+server:
+  port: 9000
+spring:
+  main:
+    banner-mode: off
+

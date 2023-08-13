@@ -1,0 +1,4 @@
+data-folder: C:/it/water-usage
+spring:
+  main:
+    banner-mode: off

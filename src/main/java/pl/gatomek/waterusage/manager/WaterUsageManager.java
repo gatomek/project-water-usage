@@ -18,18 +18,11 @@ import java.util.*;
 public class WaterUsageManager {
 
     @Value("${data-folder}")
-    private String dataFolder;
+    private String dataFolderPath;
 
     public WaterDayUsageReport makeWaterUsageDiffReport() {
 
-        String dataFolderPath = null;
-        if( dataFolder.equals( "folder-prod") || dataFolder.equals( "folder"))
-            dataFolderPath = "C:/Users/Tomek/PKM/Tomek/Dokumenty/Budżet/Zużycie wody";
-        else if( dataFolder.equals( "folder-it"))
-            dataFolderPath = "C:/it/water-usage";
-        else if( dataFolder.equals( "folder-it2"))
-            dataFolderPath = "C:/it/water-usage-2";
-
+        System.out.println( dataFolderPath);
         List<WaterDayCounter> usages = new LinkedList<>();
 
         File dataFolder = new File(dataFolderPath);
