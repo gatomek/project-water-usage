@@ -1,4 +1,4 @@
-package pl.gatomek.waterusage;
+package pl.gatomek.waterusage.it;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -7,6 +7,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.*;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.client.RestTemplate;
+import pl.gatomek.waterusage.WaterUsageApplication;
 
 import java.io.*;
 import java.nio.charset.Charset;
@@ -16,8 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = WaterUsageApplication.class)
 @ActiveProfiles("it2")
-
-public class SomeTest3IT {
+public class DownloadingFileIT {
 
     private RestTemplate restTemplate = new RestTemplate();
 
